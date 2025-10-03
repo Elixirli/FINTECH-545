@@ -24,12 +24,14 @@ def near_psd_higham(corr, tol=1e-8, max_iter=100):
 
 
 def cov_to_corr(cov: np.ndarray):
+    '''Convert the covariance matrix to correlation'''
     d = np.sqrt(np.diag(cov))
     corr = cov / np.outer(d, d)
     return corr, d
 
 
 def corr_to_cov(corr: np.ndarray, d: np.ndarray):
+    '''Convert correlation back to covariance'''
     return corr * np.outer(d, d)
 
 
@@ -59,6 +61,6 @@ def save_csv_matrix(mat: np.ndarray, path: str):
 
 
 if __name__ == "__main__":
-    input = load_csv_matrix("test5_3.csv")
-    output = simulate_normal_higham(input, 100_000, seed=42)
-    save_csv_matrix(output, "testout_5.4.csv")
+    data = load_csv_matrix("test5_3.csv")
+    out = simulate_normal_higham(data, 100_000, seed=42)
+    save_csv_matrix(out, "testout_5.4.csv")

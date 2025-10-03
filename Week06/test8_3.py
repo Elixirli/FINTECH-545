@@ -3,7 +3,7 @@ import pandas as pd
 from scipy.stats import t
 
 
-def load_returns(path: str) -> np.ndarray:
+def load_returns(path: str):
     df = pd.read_csv(path)
     return df.values.astype(float).ravel()
 

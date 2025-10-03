@@ -27,6 +27,6 @@ def save_csv_matrix(mat: np.ndarray, path: str):
 
 
 if __name__ == "__main__":
-    input = load_csv_matrix("test5_1.csv")
-    output = simulate_normal(input, 100000, seed=42)
-    save_csv_matrix(output, "testout_5.1.csv")
+    data = load_csv_matrix("test5_1.csv")
+    out = simulate_normal(data, 100000, seed=42)
+    save_csv_matrix(out, "testout_5.1.csv")

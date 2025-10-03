@@ -37,6 +37,6 @@ def save_csv_matrix(mat: np.ndarray, path: str):
 
 
 if __name__ == "__main__":
-    S_in = load_csv_matrix("test5_2.csv")
-    S_sim, k, explained_ratio = pca_simulation(S_in, explained=0.99, n_sim=100_000, seed=42)
-    save_csv_matrix(S_sim, "testout_5.5.csv")
+    data = load_csv_matrix("test5_2.csv")
+    out, k, explained_ratio = pca_simulation(data, explained=0.99, n_sim=100_000, seed=42)
+    save_csv_matrix(out, "testout_5.5.csv")
