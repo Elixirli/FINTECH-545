@@ -4,13 +4,14 @@ import pandas as pd
 
 def simulate_normal_psd(data: np.ndarray, n_sim: int = 100_000, seed: int = 42):
     np.random.seed(seed)
-    eigvals, eigvecs = np.linalg.eigh(data)
-    eigvals[eigvals < 0] = 0.0
-    L = eigvecs @ np.diag(np.sqrt(eigvals))
-    Z = np.random.randn(n_sim, data.shape[0])
-    X = Z @ L.T
-    return np.cov(X, rowvar=False)
-
+    #eigvals, eigvecs = np.linalg.eigh(data)
+    #eigvals[eigvals < 0] = 0.0
+    #L = eigvecs @ np.diag(np.sqrt(eigvals))
+    #Z = np.random.randn(n_sim, data.shape[0])
+    #X = Z @ L.T
+    #return np.cov(X, rowvar=False)
+    sims = np.random.multivariate_normal(np.zeros(data.shape[0]), data, size=n_sim)
+    return np.cov(sims, rowvar=False)
 
 def load_csv_matrix(path: str):
     df = pd.read_csv(path, header=0)   

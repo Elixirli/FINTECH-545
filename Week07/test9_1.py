@@ -19,7 +19,7 @@ def simulate_copula_returns(returns, n_sim=100_000, seed=42):
     Z = norm.ppf(U)
     Z = np.nan_to_num(Z, nan=0.0, posinf=0.0, neginf=0.0)
 
-    corr = np.corrcoef(Z, rowvar=False)
+    corr = np.corrcoef(U, rowvar=False)
     L = np.linalg.cholesky(corr)
 
     Z_sim = np.random.randn(n_sim, k) @ L.T
